@@ -14,28 +14,27 @@ module.exports = {
         port: 3000,
         stats: 'errors-only',
         open: true
-      }
+      },
+
+    plugins: [
+        new CleanWebpackPlugin(['webpack'])
+    ],
+
+    devtool: 'inline-source-map',
+
     module: {
         rules: [
-        //   {
-        //     test: /\.html$/,
-        //     use: [
-        //       {
-        //         loader: 'html-loader',
-        //         options: {minimize: true}
-        //       }
-        //     ]
-        //   },
-          {
-            exclude: /node_modules/,
-            test: /\.js$/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: [
-                ['env'],
-                'react'
-              ]
+            { test: /\.html$/, use: ['html-loader'] },
+            {
+                exclude: /node_modules/,
+                test: /\.js$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['env'],
+                            'react'
+                        ]
             //   cacheDirectory: true,
             //   plugins: [
             //     'transform-strict-mode',

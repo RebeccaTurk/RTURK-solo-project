@@ -6,10 +6,11 @@
     "name": "Rebecca Turk"
   },
   "scripts": {
-    "start": "babel-node ./server/server.js",
+    "start": "server/server.js",
     "build": "webpack",
     "build:prod": "webpack -p",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "dev": "./node_modules/.bin/webpack-dev-server"
   },
   "dependencies": {},
   "devDependencies": {
