@@ -1,1 +1,8 @@
-// {"presets": ["es2015", "react"]}
+{
+    "env": {
+      "test": {
+        "presets": ["react-native"],
+        "plugins": ["transform-es2015-modules-commonjs"]
+      }
+    }
+  }

@@ -26,3 +26,10 @@
 //     }
 //   }
   
+// DEV DEPENDENCIES JSON PACKAGE VERSION 2:
+// "devDependencies": {
+//     "@babel/preset-env": "7.0.0-beta.54",
+//     "babel-cli": "^6.26.0",
+//     "babel-preset-react": "^6.24.1",
+//     "webpack": "^2.4.1"
+//   }

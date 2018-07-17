@@ -1,7 +1,7 @@
-import http from 'http';
-import fs from 'fs';
-import url from 'url';
-import path from 'path';
+// import http from 'http';
+// import fs from 'fs';
+// import url from 'url';
+// import path from 'path';
 
 function requestHandler(request, response) {
     // resolve the path to the requested resource and assign it to a variable

@@ -2,11 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'), 
-    entry:'src/app.js',
+    //context: path.resolve(__dirname, 'src'), 
+    entry: path.resolve(__dirname, 'src', 'app.js'),
     output: {
-        filename: 'webpack.js', // ???
-        path: path.resolve(__dirname, '/build') // ? slash?
+        filename: 'calculator.js', // ???
+        path: path.resolve(__dirname, 'build') // ? slash?
     },
     devServer: {
         // contentBase: path.resolve(__dirname, "./dist/assets/media"),
@@ -16,9 +16,9 @@ module.exports = {
         open: true
       },
 
-    plugins: [
-        new CleanWebpackPlugin(['webpack'])
-    ],
+    // plugins: [
+    //     new CleanWebpackPlugin(['webpack'])
+    // ],
 
     devtool: 'inline-source-map',
 
@@ -31,7 +31,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ["babel-preset-es2015", "babel-preset-es2016", "babel-preset-es2017"].map(require.resolve)
+                        presets: ["env"] // .map(require.resolve)
             //   cacheDirectory: true,
             //   plugins: [
             //     'transform-strict-mode',
