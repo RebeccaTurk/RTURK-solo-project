@@ -31,10 +31,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: [
-                            ['env'],
-                            'react'
-                        ]
+                        presets: ["babel-preset-es2015", "babel-preset-es2016", "babel-preset-es2017"].map(require.resolve)
             //   cacheDirectory: true,
             //   plugins: [
             //     'transform-strict-mode',
