@@ -10,7 +10,8 @@ class Frame extends React.Component {
     // set our default state
     this.state = {
       question: '',
-      answer: ''
+      answer: '',
+      prevAnswer: ''
     }
     // Bind our handleClick method (sets 'this' explicitly to refer to this componenent)
     // We did this because 'this' would refer to the source of the click events
@@ -24,9 +25,9 @@ class Frame extends React.Component {
     return (
       <div className="frame">
         <div className="calculator-title">
-          R_N Calculator
+          Hi! I am a calculator!
         </div>
-        <Screen question={this.state.question} answer={this.state.answer}/>
+        <Screen question={this.state.question} answer={this.state.answer} prevAnswer={this.state.answer}/>
         <div className="button-row">
           <Button label={'1'} handleClick={this.handleClick} type='input' />
           <Button label={'2'} handleClick={this.handleClick} type='input' />
@@ -47,7 +48,7 @@ class Frame extends React.Component {
           <Button label={'9'} handleClick={this.handleClick} type='input' />
           <Button label={'.'} handleClick={this.handleClick} type='input' />
           <Button label={'0'} handleClick={this.handleClick} type='input' />
-          <Button label={'Cls'} handleClick={this.handleClick} type='action' />
+          <Button label={'Clear'} handleClick={this.handleClick} type='action' />
           <Button label={'='} handleClick={this.handleClick} type='action' />
         </div>
       </div>
@@ -57,27 +58,36 @@ class Frame extends React.Component {
   // our method to handle all click events from our buttons
   handleClick(event){
     const value = event.target.value; // get the value from the target element (button)
+    console.log('event.target: ', event.target);
+    console.log('event.target.value: ', event.target.value)
     switch (value) {
       case '=': { // if it's an equal sign, use the eval module to evaluate the question
         // convert the answer (in number) to String
         const answer = eval(this.state.question).toString();
         // update answer in our state.
-        this.setState({ answer });
+        console.log('this.state inside handleClick: ', this.state);
+        console.log('answer: ', answer);        
+        this.setState({answer});
+
         break;
       }
-      case 'Cls': {
-        // if it's the Cls sign, just clean our question and answer in the state
-        this.setState({ question: '', answer: '' });
+      case 'Clear': {
+        // if it's the Clear sign, just clean our question and answer in the state
+        this.setState({ question: '', answer: '', prevAnswer: this.state.answer});
+        console.log('this.state after CLear setState: ', this.state);
         break;
       }
       default: {
         // for every other commmand, update the answer in the state
-        this.setState({ question: this.state.question += value})
+        this.setState({ question: this.state.question += value, prevAnswer: this.state.answer});
+        console.log('this.state after default setState: ', this.state);
         break;
       }
     }
+    console.log('this.state after setState & switch: ', this.state);
   }
 }
+
 
 // export our frame component. To be used in our client/index.js file
 export default Frame;
@@ -132,7 +142,7 @@ export default Frame;
 //           <Button label={'9'} handleClick={this.handleClick} type='input' />
 //           <Button label={'.'} handleClick={this.handleClick} type='input' />
 //           <Button label={'0'} handleClick={this.handleClick} type='input' />
-//           <Button label={'Cls'} handleClick={this.handleClick} type='action' />
+//           <Button label={'Clear'} handleClick={this.handleClick} type='action' />
 //           <Button label={'='} handleClick={this.handleClick} type='action' />
 //         </div>
 //         </div>
