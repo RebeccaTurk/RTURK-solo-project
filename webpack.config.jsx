@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
     //context: path.resolve(__dirname, 'src'), 
-    entry: path.resolve(__dirname, 'src', 'app.jsx'),
+    entry: path.resolve(__dirname, 'src', 'index.jsx'),
     output: {
         filename: 'calculator.jsx', // ???
         path: path.resolve(__dirname, 'build') // ? slash?
