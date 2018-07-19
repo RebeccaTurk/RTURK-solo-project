@@ -8,9 +8,9 @@ import ScreenRow from './ScreenRow.jsx'
 const Screen = (props) => {
   return (
     <div className="screen">
-      <ScreenRow value={props.question}/>
-      <ScreenRow value={props.answer}/>
-      <ScreenRow value={props.prevAnswer}/>
+        <ScreenRow value={props.question}/>
+        <ScreenRow value={props.prevAnswer}/>
+        <ScreenRow value={props.answer}/>
     </div>
   );
 } 
