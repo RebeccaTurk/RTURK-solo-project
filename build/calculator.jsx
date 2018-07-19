@@ -604,9 +604,9 @@ var Frame = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'calculator-title' },
-          'Hi! I am a calculator!'
+          'Calculator with Memory!'
         ),
-        _react2.default.createElement(_Screen2.default, { question: this.state.question, answer: this.state.answer, prevAnswer: this.state.answer }),
+        _react2.default.createElement(_Screen2.default, { question: this.state.question, prevAnswer: this.state.answer, answer: this.state.answer }),
         _react2.default.createElement(
           'div',
           { className: 'button-row' },
@@ -644,8 +644,8 @@ var Frame = function (_React$Component) {
   }, {
     key: 'handleClick',
     value: function handleClick(event) {
+      // {const prevAnswersArr = []};
       var value = event.target.value; // get the value from the target element (button)
-      console.log('event.target: ', event.target);
       console.log('event.target.value: ', event.target.value);
       switch (value) {
         case '=':
@@ -657,25 +657,26 @@ var Frame = function (_React$Component) {
             console.log('this.state inside handleClick: ', this.state);
             console.log('answer: ', answer);
             this.setState({ answer: answer });
-
             break;
           }
         case 'Clear':
           {
             // if it's the Clear sign, just clean our question and answer in the state
-            this.setState({ question: '', answer: '', prevAnswer: this.state.answer });
-            console.log('this.state after CLear setState: ', this.state);
+            this.setState({ question: '', prevAnswer: this.state.prevAnswer, answer: '' });
+            console.log('this.state after Clear setState: ', this.state);
             break;
           }
         default:
           {
             // for every other commmand, update the answer in the state
             this.setState({ question: this.state.question += value, prevAnswer: this.state.answer });
+            // {prevAnswersArr.push(this.state.answer)}
             console.log('this.state after default setState: ', this.state);
             break;
           }
       }
       console.log('this.state after setState & switch: ', this.state);
+      // console.log('prevAnswerArr: ', {prevAnswersArr});
     }
   }]);
 
@@ -686,130 +687,6 @@ var Frame = function (_React$Component) {
 
 
 exports.default = Frame;
-
-// import React, { Component } from 'react'
-// import ReactDOM from 'react-dom';
-// import { render } from 'react-dom';
-// import '../styles/main.css';
-
-// ReactDOM.render(
-//     <div> Hello World</div>, 
-//     document.getElementById('app')
-//   );
-
-// class Frame extends React.Component {
-//     constructor() {
-//         super()
-//         this.state = {
-//             input: '',
-//             output: ''
-//         }
-
-// //bind handleClick method, so that `this` refers to this component
-//         this.handleClick = this.handleClick.bind(this);
-//     }
-
-//     render() {
-//         return(
-//             <div className = "frame">
-//                 <div className ="main-title"> 
-//                     Calculator
-//                 </div>
-//         <Screen input={this.state.input} output={this.state.output}/>
-//         <div className="button-row">
-//           <Button label={'1'} handleClick={this.handleClick} type='input' />
-//           <Button label={'2'} handleClick={this.handleClick} type='input' />
-//           <Button label={'3'} handleClick={this.handleClick} type='input' />
-//           <Button label={'4'} handleClick={this.handleClick} type='input' />
-//           <Button label={'-'} handleClick={this.handleClick} type='action' />
-//           <Button label={'+'} handleClick={this.handleClick} type='action' />
-//         </div>
-//         <div className="button-row">
-//           <Button label={'5'} handleClick={this.handleClick} type='input' />
-//           <Button label={'6'} handleClick={this.handleClick} type='input' />
-//           <Button label={'7'} handleClick={this.handleClick} type='input' />
-//           <Button label={'8'} handleClick={this.handleClick} type='input' />
-//           <Button label={'*'} handleClick={this.handleClick} type='action' />
-//           <Button label={'/'} handleClick={this.handleClick} type='action' />
-//         </div>
-//         <div className="button-row">
-//           <Button label={'9'} handleClick={this.handleClick} type='input' />
-//           <Button label={'.'} handleClick={this.handleClick} type='input' />
-//           <Button label={'0'} handleClick={this.handleClick} type='input' />
-//           <Button label={'Clear'} handleClick={this.handleClick} type='action' />
-//           <Button label={'='} handleClick={this.handleClick} type='action' />
-//         </div>
-//         </div>
-//         )
-//     }
-
-//     handleClick(event) {
-//         const value = event.target.value;
-//         switch(value) {
-//             case '=': {
-//                 const output = eval(this.state.input).toString();
-//                 this.setState({output});
-//                 break;
-//             }
-//             default: {
-//                 this.setState({input: this.state.input += value}) // REVISIT THIS LINE!
-//                 break;
-//             }
-//         }
-//     } 
-// }
-
-// export default Frame; 
-
-// /////////////////////////////////////////////////////////////////////////////////////////////////
-
-// class Row extends Component {
-//     constructor(props) {
-//         super()
-//     }
-
-//     render() {
-//         return(
-//             <div className="row">
-//                 <input type="text" value={props.value}/>
-//             </div>
-//         )
-//     }
-// }
-
-// class Screen extends Component {
-//     constructor(props) {
-//         super()
-//     }
-//     render() {
-//         return(
-//             <div className="screen">
-//                 <Row value={props.input}/>
-//                 <Row value={props.output}/>
-//             </div>
-//         )
-//     }
-// }
-
-// class Button extends Component {
-//     constructor(props) {
-//         super()
-//     }
-
-//     render() {
-//         return(
-//             <input
-//                 type="button"
-//                 class={props.type === 'action' ? 'button action-button' : 'button input-button'} // REVISIT THIS LINE
-//                 onClick={props.handleClick}
-//                 value={props.label}
-//             > </input>
-//         )
-//     }
-// }
-
-
-// export {App, Row, Screen, Button};
 
 /***/ }),
 /* 8 */

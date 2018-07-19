@@ -11,7 +11,7 @@ module.exports = {
         port: 3000,
         stats: 'errors-only',
         open: true
-      },
+    },
 
     devtool: 'inline-source-map',
 
@@ -29,12 +29,12 @@ module.exports = {
                 exclude: /node_modules/,
                 test: /\.jsx$/,
                 use: [
-                    {   
-                        loader: 'babel-loader',
-                        options: {
-                        presets: ["env", "react"] // this transpiles js & React/jsx
-                    },
-                }
+                        {   
+                            loader: 'babel-loader',
+                            options: {
+                            presets: ["env", "react"] // this transpiles js & React/jsx
+                        },
+                    }
                 ]
             }
         ]
